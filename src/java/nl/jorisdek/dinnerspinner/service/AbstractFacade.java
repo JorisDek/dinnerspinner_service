@@ -48,41 +48,39 @@ public abstract class AbstractFacade<T> {
         }
         if(gezond) {
             if (goedkoop || snel || simpel) {
-                query += "'d.gezond' = '1' OR ";
+                query += "d.gezond = 1 OR ";
             } else {
-                query += "'d.gezond' = '1'";
+                query += "d.gezond = 1";
             }
         }
         if(goedkoop){
             if(snel || simpel){
-                query += "'d.goedkoop' = '1' OR ";
+                query += "d.goedkoop = 1 OR ";
             } else {
-                query += "'d.goedkoop' = '1'";
+                query += "d.goedkoop = 1";
             }
         }
         if(snel){
             if(simpel){
-                query += "'d.snel' = '1' OR ";
+                query += "d.snel = 1 OR ";
             } else {
-                query += "'d.snel' = '1'";
+                query += "d.snel = 1";
             }
         }
         if(simpel){
-            query += "'d.simpel' = '1'";
+            query += "d.simpel = 1";
         }
 
         javax.persistence.Query q = getEntityManager().createQuery(query);
-        
+        System.out.println("SQL: "+ query);
         System.out.println("Lijst van dishes na filter!!!");
         Random rand = new Random();
         int min = 0;
-        int max = q.getResultList().toArray().length;
+        int max = q.getResultList().size(); 
         int random = rand.nextInt((max - min) + 1) + min;
         Object[] ids = q.getResultList().toArray();
+        int id = (int)ids[random];
         
-        System.out.println(Arrays.deepToString(ids));
-        
-        int id = 12;
         return getEntityManager().find(entityClass, id);
     }
     public T find(Object id) {
