@@ -24,7 +24,7 @@ import nl.jorisdek.dinnerspinner.entity.Dishes;
  * @author Gebruiker
  */
 @Stateless
-@Path("nl.jorisdek.dinnerspinner.entity.dishes")
+@Path("dishes")
 public class DishesFacadeREST extends AbstractFacade<Dishes> {
     @PersistenceContext(unitName = "DinnerSpinnerPU")
     private EntityManager em;
