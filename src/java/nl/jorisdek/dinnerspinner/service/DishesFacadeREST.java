@@ -55,7 +55,7 @@ public class DishesFacadeREST extends AbstractFacade<Dishes> {
     
     @GET
     @Path("{gezond}/{goedkoop}/{snel}/{simpel}")
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/json"})
     public Dishes findRandom(@PathParam("gezond") Boolean gezond, @PathParam("goedkoop") Boolean goedkoop, @PathParam("snel") Boolean snel, @PathParam("simpel") Boolean simpel) {
         return super.findRandom(gezond, goedkoop, snel, simpel);
     }
